@@ -1,0 +1,20 @@
+.searchcont{
+    margin: 20px 0px;
+    padding: 20px;
+    max-width: 360px;
+}
+
+.search{
+    font-size: 25px;
+    color: #000;
+}
+
+.inputsearch{
+    width: 100%;
+    padding: 10px 2px;
+    border: 1px solid #999797;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #000;
+    font-size: 14px;
+}
