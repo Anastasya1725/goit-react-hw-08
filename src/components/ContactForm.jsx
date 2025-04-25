@@ -23,17 +23,17 @@ const ContactForm = () => {
       .max(50, 'Max 50 characters')
       .required("Required"),
     }),
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: (newContact, { resetForm }) => {
       const isDuplicate = contacts.some(
-        contact => contact.name.toLowerCase() === values.name.toLowerCase()
+        contact =>  typeof contact.name === 'string' && contact.name.toLowerCase() === newContact.name.toLowerCase()
       );
 
       if (isDuplicate) {
-        alert(`${values.name} is already in contacts.`);
+        alert(`${newContact.name} is already in contacts.`);
         return;
       }
 
-      dispatch(addContact({ ...values, id: crypto.randomUUID() }));
+      dispatch(addContact({ ...newContact, id: crypto.randomUUID() }));
       resetForm();
     },
   });
