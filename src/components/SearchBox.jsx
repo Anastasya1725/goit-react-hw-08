@@ -12,7 +12,7 @@ const SearchBox = () => {
 
   return (
     <input
-      className={s.input}
+      className={s.inputsearch}
       type="text"
       value={filter}
       onChange={handleChange}

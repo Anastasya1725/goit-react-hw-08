@@ -14,8 +14,14 @@ const ContactForm = () => {
       number: "",
     },
     validationSchema: Yup.object({
-      name: Yup.string().required("Required"),
-      number: Yup.string().required("Required"),
+      name: Yup.string()
+      .min(3, 'Min 3 characters')
+      .max(50, 'Max 50 characters')
+      .required("Required"),
+      number: Yup.string()
+      .min(3, 'Min 3 characters')
+      .max(50, 'Max 50 characters')
+      .required("Required"),
     }),
     onSubmit: (values, { resetForm }) => {
       const isDuplicate = contacts.some(
@@ -33,26 +39,30 @@ const ContactForm = () => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit} className={s.form}>
+    <form onSubmit={formik.handleSubmit} className={s.formcontact}>
+      <div className={s.formGroup}>
+      <label>Name</label>
       <input
         type="text"
         name="name"
-        placeholder="Name"
         value={formik.values.name}
         onChange={formik.handleChange}
-        className={s.input}
+        className={s.formcontact}
       />
+       <div className={s.errormess}>{formik.errors.name}</div>
+      <label>Phone number</label>
       <input
         type="tel"
         name="number"
-        placeholder="Phone number"
         value={formik.values.number}
         onChange={formik.handleChange}
-        className={s.input}
+        className={s.formcontact}
       />
-      <button type="submit" className={s.button}>
+       <div className={s.errormess}>{formik.errors.name}</div>
+      <button type="submit" className={s.btnform}>
         Add Contact
       </button>
+      </div>
     </form>
   );
 };
