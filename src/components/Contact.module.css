@@ -1,7 +1,7 @@
 .contact{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+  align-items: flex-start;
     padding: 15px;
     background: rgb(252, 250, 250);
     border-radius: 16px;

@@ -1,27 +1,28 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deleteContact } from "../redux/contactsSlice";
+import { deleteContact } from "../redux/contactsOps";
 import PersonIcon from "../icons/personal.svg?react";
 import PhoneIcon from "../icons/phone.svg?react";
 import s from "./Contact.module.css";
 
 const Contact = ({ contact }) => {
   const dispatch = useDispatch();
-  const { id, name, number } = contact;
 
   const handleDelete = () => {
-    dispatch(deleteContact(id));
+    dispatch(deleteContact(contact.id));
   };
 
   return (
     <li className={s.contact}>
-      <div className={s.details}>
+      <p className={s.details}>
         <PersonIcon className={s.icon} />
-        <p className={s.name}>{name}</p>
+        {contact.name}
+      </p>
+      <p className={s.details}>
         <PhoneIcon className={s.icon} />
-        <p className={s.number}>{number}</p>
-      </div>
-      <button className={s.deleteButton} onClick={handleDelete}>
+        {contact.number}
+      </p>
+      <button className={s.btn} onClick={handleDelete}>
         Delete
       </button>
     </li>
@@ -29,4 +30,3 @@ const Contact = ({ contact }) => {
 };
 
 export default Contact;
-

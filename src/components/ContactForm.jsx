@@ -1,39 +1,29 @@
-import { useDispatch, useSelector } from "react-redux";
-import { addContact } from "../redux/contactsSlice";
+import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { addContact } from "../redux/contactsOps";
 import s from "./ContactForm.module.css";
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.items);
 
   const formik = useFormik({
     initialValues: {
-      name: "",
-      number: "",
+      name: '',
+      number: '',
     },
     validationSchema: Yup.object({
       name: Yup.string()
-      .min(3, 'Min 3 characters')
-      .max(50, 'Max 50 characters')
-      .required("Required"),
+        .min(3, 'Min 3 characters')
+        .max(50, 'Max 50 characters')
+        .required("Required"),
       number: Yup.string()
-      .min(3, 'Min 3 characters')
-      .max(50, 'Max 50 characters')
-      .required("Required"),
+        .min(3, 'Min 3 characters')
+        .max(50, 'Max 50 characters')
+        .required("Required"),
     }),
     onSubmit: (newContact, { resetForm }) => {
-      const isDuplicate = contacts.some(
-        contact =>  typeof contact.name === 'string' && contact.name.toLowerCase() === newContact.name.toLowerCase()
-      );
-
-      if (isDuplicate) {
-        alert(`${newContact.name} is already in contacts.`);
-        return;
-      }
-
-      dispatch(addContact({ ...newContact, id: crypto.randomUUID() }));
+      dispatch(addContact(newContact));
       resetForm();
     },
   });
@@ -49,7 +39,7 @@ const ContactForm = () => {
         onChange={formik.handleChange}
         className={s.formcontact}
       />
-       <div className={s.errormess}>{formik.errors.name}</div>
+        <div className={s.errormess}>{formik.errors.name}</div>
       <label>Phone number</label>
       <input
         type="tel"
@@ -58,7 +48,7 @@ const ContactForm = () => {
         onChange={formik.handleChange}
         className={s.formcontact}
       />
-       <div className={s.errormess}>{formik.errors.name}</div>
+        <div className={s.errormess}>{formik.errors.number}</div> {/* Виправлено відображення помилки для number */}
       <button type="submit" className={s.btnform}>
         Add Contact
       </button>
