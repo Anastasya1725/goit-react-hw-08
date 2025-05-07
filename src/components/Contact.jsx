@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deleteContact } from "../redux/contactsOps";
+import { deleteContact } from "../redux/contacts/operations";
 import PersonIcon from "../icons/personal.svg?react";
 import PhoneIcon from "../icons/phone.svg?react";
 import s from "./Contact.module.css";
