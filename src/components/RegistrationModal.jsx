@@ -10,9 +10,9 @@ const RegistrationModal = ({ isOpen, onClose }) => {
   return (
     <div  onClick={onClose}>
       <div  onClick={e => e.stopPropagation()}>
-        <h2>Реєстрація</h2>
+        <h2>Registration</h2>
         <RegistrationForm onSuccess={onClose} />
-        <button type="button" onClick={onClose}>Закрити</button>
+        <button type="button" onClick={onClose}>Close</button>
       </div>
     </div>
   );

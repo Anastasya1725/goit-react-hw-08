@@ -11,16 +11,16 @@ const HomePage = () => {
 
   return (
     <div >
-      <h1>Ласкаво просимо до Книги контактів!</h1>
+      <h1>Welcome to the Contact Book!</h1>
       {isLoggedIn ? (
         <div >
-          <h2>Ваші контакти</h2>
+          <h2>Your contacts</h2>
           <ContactForm />
           <SearchBox />
           <ContactList />
         </div>
       ) : (
-        <p>Будь ласка, зареєструйтеся або увійдіть, щоб переглядати свої контакти.</p>
+        <p>Please register or log in to view your contacts.</p>
       )}
     </div>
   );

@@ -1,25 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import RegistrationModal from './RegistrationModal';
+import s from './AuthNav.module.css';
 
 const AuthNav = () => {
-  const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
-
-  const openRegistrationModal = () => {
-    setIsRegistrationModalOpen(true);
-  };
-
-  const closeRegistrationModal = () => {
-    setIsRegistrationModalOpen(false);
-  };
-
   return (
-    <div>
-      <button onClick={openRegistrationModal}>Реєстрація</button>
-      <NavLink to="/login">Логін</NavLink>
-      <RegistrationModal isOpen={isRegistrationModalOpen} onClose={closeRegistrationModal} />
+    <div className={s.authNav}>
+      <NavLink to="/login" className={s.link}>Login</NavLink>
+      <NavLink to="/register" className={s.link}>Registration</NavLink>
     </div>
   );
 };
 
 export default AuthNav;
+

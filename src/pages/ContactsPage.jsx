@@ -15,10 +15,10 @@ const ContactsPage = () => {
 
   return (
     <div>
-      <h2>Контакти</h2>
+      <h2>Contact</h2>
       <ContactForm />
       <div>
-        <h3>Знайти контакт за ім'ям</h3>
+        <h3>Find a contact by name</h3>
         <Filter />
       </div>
       <ContactList />

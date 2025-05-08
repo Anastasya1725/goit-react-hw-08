@@ -3,16 +3,17 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { register } from '../redux/auth/operations';
+import s from "./RegistrationForm.module.css";
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
-    .min(2, 'Занадто коротке ім\'я!')
-    .max(50, 'Занадто довге ім\'я!')
-    .required('Будь ласка, введіть ім\'я'),
-  email: Yup.string().email('Невірний формат email').required('Будь ласка, введіть email'),
+    .min(2, 'Too short a name!')
+    .max(50, 'Name too long!')
+    .required('Please enter a name.'),
+  email: Yup.string().email('Invalid email format').required('Please enter your email'),
   password: Yup.string()
-    .min(6, 'Пароль повинен бути не менше 6 символів')
-    .required('Будь ласка, введіть пароль'),
+    .min(6, 'Password must be at least 6 characters long.')
+    .required('Please enter your password.'),
 });
 
 const RegistrationForm = ({ onSuccess }) => {
@@ -31,34 +32,31 @@ const RegistrationForm = ({ onSuccess }) => {
         if (register.fulfilled.match(resultAction)) {
           onSuccess();
           resetForm();
-          // Можна додати тут відображення повідомлення про успішну реєстрацію
         } else if (register.rejected.match(resultAction)) {
-          // Обробка помилки реєстрації
-          console.error("Помилка реєстрації:", resultAction.payload);
-          // Відображення повідомлення про помилку користувачу
+          console.error("error registration:", resultAction.payload);
         }
       }}
     >
-      <Form>
-        <div>
-          <label htmlFor="name">Ім'я</label>
-          <Field type="text" name="name" />
-          <ErrorMessage name="name" component="div" />
+  <Form className={s.form}>
+        <div className={s.formGroup}>
+          <label htmlFor="registrationName" className={s.label}>Name</label>
+          <Field type="text" name="name" id="registrationName" className={s.input}/>
+          <ErrorMessage name="name" component="div" className={s.error}/>
         </div>
 
-        <div>
-          <label htmlFor="email">Email</label>
-          <Field type="email" name="email" />
-          <ErrorMessage name="email" component="div" />
+        <div className={s.formGroup}>
+          <label htmlFor="registrationEmail" className={s.label}>Email</label>
+          <Field type="email" name="email" id="registrationEmail" className={s.input} />
+          <ErrorMessage name="email" component="div" className={s.error}/>
         </div>
 
-        <div>
-          <label htmlFor="password">Пароль</label>
-          <Field type="password" name="password" />
-          <ErrorMessage name="password" component="div" />
+        <div className={s.formGroup}>
+          <label htmlFor="registrationPassword" className={s.label}>Password</label>
+          <Field type="password" name="password" id="registrationPassword" className={s.input}/>
+          <ErrorMessage name="password" component="div" className={s.error}/>
         </div>
 
-        <button type="submit">Зареєструватися</button>
+        <button type="submit" className={s.button}>Registration</button>
       </Form>
     </Formik>
   );

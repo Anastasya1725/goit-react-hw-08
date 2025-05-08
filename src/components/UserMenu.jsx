@@ -9,9 +9,9 @@ const UserMenu = () => {
 
   return (
     <div>
-      <span>Ласкаво просимо, {user.name}</span>
+      <span>Welcome, {user.name}</span>
       <button type="button" onClick={() => dispatch(logout())}>
-        Вийти
+        Exit
       </button>
     </div>
   );
