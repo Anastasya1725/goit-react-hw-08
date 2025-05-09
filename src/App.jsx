@@ -8,7 +8,10 @@ import { selectIsRefreshing, selectIsLoggedIn } from './redux/auth/selectors';
 import { PersistGate } from "redux-persist/integration/react";
 import Layout from './components/Layout';
 import RestrictedRoute from './components/RestrictedRoute';
+import PrivateRoute from './components/PrivateRoute';
 
+
+const ContactsPage = lazy(() => import('./pages/ContactsPage'));
 const HomePage = lazy(() => import('./pages/HomePage'));
 const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
@@ -41,6 +44,10 @@ function App() {
               <Route
                 path="/register"
                 element={<RestrictedRoute redirectTo="/" component={<RegistrationPage />} />} 
+              />
+             <Route
+                path="/contacts"
+                element={<PrivateRoute redirectTo="/login" component={<ContactsPage />} />}
               />
               <Route
                 path="/login"
