@@ -39,6 +39,7 @@ const LoginForm = () => {
           onChange={formik.handleChange}
           value={formik.values.email}
           className={s.input}
+          id="email"
         />
         {formik.errors.email && formik.touched.email && (
           <div className={s.formGroup}>{formik.errors.email}</div>
@@ -53,6 +54,7 @@ const LoginForm = () => {
           onChange={formik.handleChange}
           value={formik.values.password}
           className={s.input}
+          id="password"
         />
         {formik.errors.password && formik.touched.password && (
           <div className={s.formGroup}>{formik.errors.password}</div>
