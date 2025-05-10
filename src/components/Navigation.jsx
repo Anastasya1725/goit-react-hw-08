@@ -9,7 +9,7 @@ const Navigation = () => {
 
   return (
     <nav>
-      <NavLink to="/" exact="true"className={s.title}>
+      <NavLink to="/" exact="true" className={s.title}>
         Home
       </NavLink>
       {isLoggedIn && (

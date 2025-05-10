@@ -45,9 +45,10 @@ function App() {
                 path="/register"
                 element={<RestrictedRoute redirectTo="/" component={<RegistrationPage />} />} 
               />
-             <Route
-  path="/contacts"
-  element={<PrivateRoute component={ContactsPage} redirectTo="/login" />}
+<Route
+  path="/contacts"  element={
+    <PrivateRoute redirectTo="/login">  <ContactsPage />  </PrivateRoute>
+  }
 />
               <Route
                 path="/login"

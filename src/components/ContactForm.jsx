@@ -48,7 +48,7 @@ const ContactForm = () => {
         onChange={formik.handleChange}
         className={s.formcontact}
       />
-        <div className={s.errormess}>{formik.errors.number}</div> {/* Виправлено відображення помилки для number */}
+        <div className={s.errormess}>{formik.errors.number}</div>
       <button type="submit" className={s.btnform}>
         Add Contact
       </button>

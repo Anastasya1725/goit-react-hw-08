@@ -7,8 +7,8 @@ import s from "./LoginForm.module.css";
 
 
 const LoginSchema = Yup.object().shape({
-  email: Yup.string().email('Невірний формат email').required('Будь ласка, введіть email'),
-  password: Yup.string().required('Будь ласка, введіть пароль'),
+  email: Yup.string().email('Invalid format email').required('Please enter email'),
+  password: Yup.string().required('Please enter email'),
 });
 
 const LoginForm = () => {
@@ -47,7 +47,7 @@ const LoginForm = () => {
       </div>
 
       <div className={s.formGroup}>
-        <label htmlFor="password" className={s.label}>Пароль</label>
+        <label htmlFor="password" className={s.label}>Password</label>
         <input
           type="password"
           name="password"
@@ -61,7 +61,7 @@ const LoginForm = () => {
         )}
       </div>
 
-      <button type="submit" >Увійти</button>
+      <button type="submit" >Enter</button>
     </form>
   );
 };

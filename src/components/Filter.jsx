@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectNameFilter } from '../redux/filters/selectors';
 import { setNameFilter } from '../redux/filters/slice';
+import s from "./Filter.module.css";
 
 const Filter = () => {
   const filter = useSelector(selectNameFilter);
@@ -12,10 +13,7 @@ const Filter = () => {
   };
 
   return (
-    <label>
-      Знайти контакт за ім'ям
-      <input type="text" value={filter} onChange={handleChange} />
-    </label>
+      <input type="text" value={filter} onChange={handleChange} placeholder='Search contact name' className={s.inputsearch}/>
   );
 };
 
