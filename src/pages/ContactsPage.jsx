@@ -5,6 +5,7 @@ import ContactList from '../components/ContactList';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchContacts } from '../redux/contacts/operations';
+import SearchBox from "../components/SearchBox";
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const ContactsPage = () => {
         <h3>Find a contact by name</h3>
         <Filter />
       </div>
+      <SearchBox />
       <ContactList />
     </div>
   );
